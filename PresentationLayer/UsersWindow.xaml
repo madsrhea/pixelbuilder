@@ -1,0 +1,19 @@
+﻿<Window x:Class="PresentationLayer.UsersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer"
+        mc:Ignorable="d"
+        Title="PixelBuilder v. 2.0" Height="650" Width="700" Topmost="True" Icon="/pixelbuilder.png" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label x:Name="lblUserList" Content="User List" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,75,0,0" FontFamily="MS Gothic" FontSize="36" FontWeight="Bold"/>
+        <DataGrid x:Name="datUserList" Width="650" Height="450" VerticalAlignment="Bottom" SelectionMode="Single" HorizontalAlignment="Center" Margin="0,6,0,50" MouseDoubleClick="datUserList_MouseDoubleClick" FontFamily="MS Gothic" FontSize="16" GridLinesVisibility="Horizontal" IsReadOnly="True" Loaded="datUserList_Loaded" />
+        <!---<ComboBox x:Name="cmbFilterUsers" Width="200" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,75,0,0">
+           <ComboBoxItem x:Name="cbiActive" Content="Active"/>
+            <ComboBoxItem x:Name="cbiInactive" Content="Inactive"/>
+            <ComboBoxItem x:Name="cbiGeneral" Content="General"/>
+            <ComboBoxItem x:Name="cbiModerator" Content="Moderator"/>
+        </ComboBox> -->
+    </Grid>
+</Window>

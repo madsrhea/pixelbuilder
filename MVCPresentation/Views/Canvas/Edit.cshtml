@@ -1,0 +1,94 @@
+﻿@model IEnumerable<MVCPresentation.Models.LoadCanvasPlacementViewModel>
+@using System.Drawing;
+
+@{
+    string colorHex = "";
+    var colorText = "";
+
+    LogicLayer.BeadManager beadManager = new LogicLayer.BeadManager();
+
+    ViewBag.Title = "Create";
+
+
+
+}
+
+<h2>Create!</h2>
+
+<!-- holds everybody -->
+<div class="container">
+    <!-- column 1 / 3 - color selection -->
+    <nav class="color-collection" style="float: left;">
+
+        <select id="color-groups">
+            @foreach (var colorGroup in beadManager.RetrieveAllColorGroups())
+            {
+                <option>@colorGroup</option>
+            }
+        </select>
+
+        <button id="grid-button" onclick="GridOnOff()">Grid</button>
+
+        <ul id="all-colors" style="text-decoration:none; height: 500px; width: 255px; overflow: hidden; overflow-y: scroll;">
+
+            <!-- this loads the buttons in with their name displayed,
+                 the color of the button matching the bead, and changes
+                 the text color based of the button color for easier
+                 readability -->
+
+            @foreach (var bead in Model)
+            {
+                colorHex = "#" + bead.Bead.HexValue;
+
+                Color color = ColorTranslator.FromHtml(colorHex);
+                int r = Convert.ToInt16(color.R);
+                int g = Convert.ToInt16(color.G);
+                int b = Convert.ToInt16(color.B);
+
+                if (((r * 0.299) + (g * 0.587) + (b * 0.114)) > 186)
+                {
+                    colorText = "#000000";
+                }
+                else
+                {
+                    colorText = "#FFFFFF";
+                }
+
+                <li style="list-style-type: none;">
+                    <button class="color-button" value="@colorHex" style="height: 35px; width: 200px; background-color: @colorHex; color: @colorText; font-weight:bold;" title="@bead.Bead.BeadID @bead.Bead.ColorName" onclick="ChangeCurrentColor()">
+                        @bead.Bead.ColorName
+                    </button>
+                </li>
+
+            }
+
+        </ul>
+    </nav>
+
+
+
+    <!-- column 2 / 3 - drawing area -->
+    <canvas id="drawing-screen" height="600" width="600" style="border:dashed; border-width: 1px;">
+    </canvas>
+
+    <!-- column 3 / 3 - tools -->
+    <div class="canvas-tools" style="float: right;">
+        <form id="frmCurrentColor">
+            <p>current color is </p>
+        </form>
+        <button id="erase-btn">❌</button>
+        <button id="paint-btn">✏</button>
+    </div>
+    <script src="~/Scripts/drawing.js"></script>
+    @foreach (var pixel in Model)
+    {   
+        <script>
+            var canvas = document.getElementById('drawing-screen');
+            var context = canvas.getContext('2d');
+            context.beginPath();
+            context.rect(@pixel.Canvas.Row, @pixel.Canvas.Column, pixelSize, pixelSize);
+            context.strokeStyle(@pixel.HexColor);
+        </script>
+    }
+</div>
+

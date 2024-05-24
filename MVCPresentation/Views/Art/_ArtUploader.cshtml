@@ -1,0 +1,9 @@
+﻿@using System
+
+@using (Html.BeginForm("UploadImage", "Art", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+  <div>
+        @Html.TextBox("file", "", new { type = "file" }) <br/>
+        <input type="submit" value="Upload"/>
+  </div>
+}

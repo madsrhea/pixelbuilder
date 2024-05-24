@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DataObjects.Follower>
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+@{
+    Layout = null;
+}
+
+<div class="user-followers">
+    @if (Model == null)
+    {
+
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <div class="follower-icons">
+                <p> @Html.DisplayFor(modelItem => item.UserID)</p>
+
+                <p>@Html.ActionLink("Index", "Users", new { userID = item.UserID }, null)</p>
+
+                <p>@Html.ActionLink("Delete", "DeleteFollower", new { followingID = item.FollowingID })</p>
+            </div>
+
+        }
+    }
+
+</div>
+
+

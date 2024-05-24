@@ -1,0 +1,11 @@
+C:\Users\schoo\source\repos\PixelBuilder2\DataObjects\bin\Debug\DataObjects.dll
+C:\Users\schoo\source\repos\PixelBuilder2\DataObjects\bin\Debug\DataObjects.pdb
+C:\Users\schoo\source\repos\PixelBuilder2\DataObjects\obj\Debug\DataObjects.csproj.AssemblyReference.cache
+C:\Users\schoo\source\repos\PixelBuilder2\DataObjects\obj\Debug\DataObjects.csproj.CoreCompileInputs.cache
+C:\Users\schoo\source\repos\PixelBuilder2\DataObjects\obj\Debug\DataObjects.dll
+C:\Users\schoo\source\repos\PixelBuilder2\DataObjects\obj\Debug\DataObjects.pdb
+C:\Users\schoo\source\repos\20221208_final\PixelBuilder2\DataObjects\bin\Debug\DataObjects.dll
+C:\Users\schoo\source\repos\20221208_final\PixelBuilder2\DataObjects\bin\Debug\DataObjects.pdb
+C:\Users\schoo\source\repos\20221208_final\PixelBuilder2\DataObjects\obj\Debug\DataObjects.csproj.CoreCompileInputs.cache
+C:\Users\schoo\source\repos\20221208_final\PixelBuilder2\DataObjects\obj\Debug\DataObjects.dll
+C:\Users\schoo\source\repos\20221208_final\PixelBuilder2\DataObjects\obj\Debug\DataObjects.pdb

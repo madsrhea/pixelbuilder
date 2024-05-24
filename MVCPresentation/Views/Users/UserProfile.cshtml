@@ -1,0 +1,85 @@
+﻿@model MVCPresentation.Models.FavoriteViewModel
+@using System.Collections.Generic
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+@using DataObjects
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+    <style>
+        .gallery-section
+        {
+            display: block;
+            width: 100%;
+            background-color:  rgb(255 255 255 / 0.5);
+            padding: 2px 10px 10px 10px;
+            border-radius: 15px;
+        }
+
+        .favorites-section {
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+            background-color: rgb(255 255 255 / 0.5);
+            padding: 2px 10px 10px 10px;
+            border-radius: 15px;
+        }
+
+    </style>
+</head>
+
+
+@if (Request.IsAuthenticated)
+{
+    ApplicationUserManager userManager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+    var user = userManager.FindById(User.Identity.GetUserId());
+    ViewBag.CurrentUser = user.PixelUserName;
+    LogicLayer.FavoriteManager usrMgr = new LogicLayer.FavoriteManager();
+
+    <div class="container">
+        <div>
+            <h1>@user.PixelUserName</h1>
+        </div>
+
+        <div>
+            <h4> @user.DisplayName </h4>
+        </div>
+
+        <div>
+            <h3> @user.ShortBio </h3>
+
+        </div>
+        <div class="gallery-section">
+            <h2>Gallery</h2>
+            @Html.Action("ViewUserGallery", "Users", new { userID = user.UserId })
+        </div>
+
+        <div class="favorites-section">
+            <h2>Favorites</h2>
+            @if (user.UserId != null && usrMgr.RetrieveAllUserFavorites((int)user.UserId).Count != 0)
+            {
+                 @Html.Action("ViewFavorites", "Users", new { userID = user.UserId })
+            }
+            else
+            { 
+                <p>No favorites to display. :(</p>
+            }
+        </div>
+
+        <div class="followers-section">
+            <h2>Followers</h2>
+            <p>TBC</p>
+            <!--Html.Action("ViewFavorites", "Users", new { userID = user.UserId })-->
+        </div>
+
+        <div class="following-section">
+            <h2>Following</h2>
+            <p>TBC</p>
+            <!--Html.Action("ViewFavorites", "Users", new { userID = user.UserId })-->
+        </div>
+    </div>
+
+}

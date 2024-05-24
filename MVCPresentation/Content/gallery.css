@@ -1,0 +1,47 @@
+﻿
+.subheader-with-link a {
+    color: #1C6758;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .subheader-with-link a:hover {
+        color: #3D8361;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+#filterByAnimalType .grid-container {
+    display: none;
+}
+
+body {
+    background-color: #FFCBC4;
+    background-image: url("../images/galleryBG.jpg");
+    background-size: cover;
+}
+.body-content {
+    margin-top: 60px;
+    right: 0;
+}
+
+.card {
+    border-radius: 15px;
+    border: 3px solid #FF9899;
+    width: 250px;
+    height: 250px;
+    margin-bottom: 10px;
+}
+
+.card img{
+    height: 100%;
+    width: 100%;
+}
+
+.col-sm-5 {
+    width: auto;
+}
+
+.row {
+width: 100%;
+}

@@ -1,0 +1,27 @@
+﻿@model MVCPresentation.Models.FavoriteViewModel
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+@{
+    Layout = null;
+}
+
+<div class="user-gallery">
+    @if (Model == null)
+    {
+        <p>No art to display. :(</p>
+    }
+    else
+    {
+        foreach (var art in Model.Favorites)
+        {
+            <div class="gallery-icons">
+                @{
+                    string imagePath = "/images/" + art.ArtName + "_" + art.ArtID + ".png";
+                    <button onclick="location.href='@Url.Action("Details", "Art", new { artID = art.ArtID}, null)'"><img src="@imagePath" /></button>
+                }
+
+            </div>
+        }
+    }
+
+</div>

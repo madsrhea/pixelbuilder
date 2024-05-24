@@ -1,0 +1,6 @@
+D:\hp laptop user data\schoo\source\repos\20221208_final\PixelBuilder2\DataObjects\bin\Release\DataObjects.dll
+D:\hp laptop user data\schoo\source\repos\20221208_final\PixelBuilder2\DataObjects\bin\Release\DataObjects.pdb
+D:\hp laptop user data\schoo\source\repos\20221208_final\PixelBuilder2\DataObjects\obj\Release\DataObjects.csproj.AssemblyReference.cache
+D:\hp laptop user data\schoo\source\repos\20221208_final\PixelBuilder2\DataObjects\obj\Release\DataObjects.csproj.CoreCompileInputs.cache
+D:\hp laptop user data\schoo\source\repos\20221208_final\PixelBuilder2\DataObjects\obj\Release\DataObjects.dll
+D:\hp laptop user data\schoo\source\repos\20221208_final\PixelBuilder2\DataObjects\obj\Release\DataObjects.pdb

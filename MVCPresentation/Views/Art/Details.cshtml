@@ -1,0 +1,65 @@
+﻿@model MVCPresentation.Models.IndividualArtViewModel
+
+@{
+
+    ViewBag.Title = "Details";
+    LogicLayer.FavoriteManager favManager = new LogicLayer.FavoriteManager();
+}
+
+@{
+    string imagePath = "/images/" + Model.Art.ArtName + "big_" + Model.Art.ArtID + ".png";
+    <img id="imgCanvas" src="@imagePath" style="width:0; height:0;" />
+
+
+}
+
+    <h2>Details</h2>
+
+    <body>
+
+    </body>
+    <div>
+        <h4>Art</h4>
+        <hr />
+
+        <canvas id="imageCanvas" width="600" height="600">
+        </canvas>
+
+        <h2>@Html.DisplayFor(model => model.Art.ArtName)</h2>
+        <h3><a href="@Url.Action("UserProfile", "Users")">@Html.DisplayFor(model => model.Art.Username)</a></h3>
+        <h4>@Html.DisplayFor(model => model.Art.PostedOn)</h4>
+        <p>@Html.DisplayFor(model => model.Art.Description)</p>
+
+
+        @if (Model.User != null && favManager.ConfirmFavorite(Model.User.UserID, Model.Art.ArtID))
+        {
+            <button onclick="@favManager.RemoveFavorite(Model.User.UserID, Model.Art.ArtID)">Unfavorite ❌</button>
+        }
+        else
+        {   
+            <button onclick="@favManager.CreateFavorite(Model.User.UserID, Model.Art.ArtID)">Favorite 🌟</button>
+        }
+    </div>
+    <p>
+        @if ((Model.User != null && Model.User.Username == Model.Art.Username))
+        {
+            @Html.ActionLink("Edit Art?", "Edit", new { artID = Model.Art.ArtID });
+        }
+
+        <!--if (Model.User.Role.Equals("Admin") || Model.User.Role.Equals("Moderator"))
+     {
+         Html.ActionLink("Edit", "Edit", new { id = Model.Art.ArtID });
+     }-->
+
+        @Html.ActionLink("Back to List", "Gallery")
+    </p>
+
+    <script src="~/Scripts/artdetails.js"></script>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("imageCanvas");
+            var ctx = canvas.getContext("2d");
+            var img = document.getElementById("imgCanvas");
+            ctx.drawImage(img, 0, 0, 600, 600);
+        }
+    </script>

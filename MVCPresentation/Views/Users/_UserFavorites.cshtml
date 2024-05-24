@@ -1,0 +1,30 @@
+﻿@model MVCPresentation.Models.FavoriteViewModel
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+@{
+    Layout = null;
+}
+
+
+<div class="user-favorites">
+    @if (Model.Favorites == null || Model.Favorites.Count == 0)
+    {
+        <p>No favorites to display. :(</p>
+    }
+    
+    <div class="favorite-icons">
+        @foreach (var favorite in Model.Favorites)
+        {
+            string imagePath = "/images/" + favorite.ArtName + "_" + favorite.ArtID + ".png";
+                <button onclick="location.href='@Url.Action("Details", "Art", new { artID = favorite.ArtID }, null)'"><img src="@imagePath" /></button>
+
+            if (Model.User.Email == User.Identity.Name)
+            {
+            
+            <div class="delete-buttons"> @Html.ActionLink("Delete", "DeleteFavorite", new { artID = favorite.ArtID, userID = favorite.UserID }) </div>
+
+            }
+        }
+
+    </div>
+</div>
